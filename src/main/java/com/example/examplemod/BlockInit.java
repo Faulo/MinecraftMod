@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlockInit {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
-			ExampleMod.MOD_ID);
+			Constants.MOD_ID);
 
 	public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block",
 			() -> new Block(Block.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE)));

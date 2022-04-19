@@ -8,7 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ItemInit {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
-			ExampleMod.MOD_ID);
+			Constants.MOD_ID);
 
 	// Block Items
 	public static final RegistryObject<BlockItem> EXAMPLE_BLOCK = ITEMS.register("example_block",

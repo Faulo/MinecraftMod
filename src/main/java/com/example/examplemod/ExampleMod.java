@@ -6,10 +6,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("agge")
+@Mod(Constants.MOD_ID)
 public class ExampleMod {
-	public static final String MOD_ID = "agge";
-
 	public ExampleMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		bus.addListener(this::setup);
@@ -19,6 +17,5 @@ public class ExampleMod {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
-
 	}
 }
