@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -25,6 +26,14 @@ public class MobInit {
 	@SubscribeEvent
 	public static final void entityAttributeCreation(EntityAttributeCreationEvent event) {
 		event.put(MobInit.SLOTH.get(), createCustomAttributes().build());
+	}
+	@SubscribeEvent
+	public static final void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		//event.registerLayerDefinition(MobInit.SLOTH.get(), SlothModel::createBodyLayer);
+	}
+	@SubscribeEvent
+	public static final void reigsterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerEntityRenderer(MobInit.SLOTH.get(), SlothRenderer::new);
 	}
 
 	public static AttributeSupplier.Builder createCustomAttributes() {
