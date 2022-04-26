@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.slothsoft.minecraft.sloth;
 
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;

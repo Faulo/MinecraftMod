@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.slothsoft.minecraft.sloth;
 
 public final class Constants {
     public static final String MOD_NAME = "Sloth Mod";

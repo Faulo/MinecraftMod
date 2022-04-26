@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.slothsoft.minecraft.sloth;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.TextComponent;

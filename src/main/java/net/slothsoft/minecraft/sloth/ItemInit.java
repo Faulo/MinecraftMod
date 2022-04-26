@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package net.slothsoft.minecraft.sloth;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
