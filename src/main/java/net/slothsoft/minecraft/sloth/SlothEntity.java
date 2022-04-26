@@ -8,9 +8,9 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
-public class Sloth extends Animal {
+public class SlothEntity extends Animal {
 
-	protected Sloth(EntityType<? extends Animal> animal, Level level) {
+	protected SlothEntity(EntityType<? extends Animal> animal, Level level) {
 		super(animal, level);
 		// TODO Auto-generated constructor stub
 	}

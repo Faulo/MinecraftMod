@@ -18,8 +18,8 @@ public class MobInit {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES,
 			Constants.MOD_ID);
 
-	public static final RegistryObject<EntityType<Sloth>> SLOTH = ENTITIES.register("sloth",
-			() -> EntityType.Builder.<Sloth>of(Sloth::new, MobCategory.CREATURE).sized(1.0f, 1.0f)
+	public static final RegistryObject<EntityType<SlothEntity>> SLOTH = ENTITIES.register("sloth",
+			() -> EntityType.Builder.<SlothEntity>of(SlothEntity::new, MobCategory.CREATURE).sized(1.0f, 1.0f)
 					.build(new ResourceLocation(Constants.MOD_ID, "sloth").toString()));
 
 	@SubscribeEvent
