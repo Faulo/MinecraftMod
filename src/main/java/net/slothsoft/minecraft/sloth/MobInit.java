@@ -28,18 +28,18 @@ public class MobInit {
 	public static final void entityAttributeCreation(EntityAttributeCreationEvent event) {
 		event.put(MobInit.SLOTH.get(), createCustomAttributes().build());
 	}
+
 	@SubscribeEvent
 	public static final void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(SlothModel.LAYER_LOCATION, SlothModel::createBodyLayer);
 	}
+
 	@SubscribeEvent
 	public static final void reigsterRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(MobInit.SLOTH.get(), SlothRenderer::new);
 	}
 
 	public static AttributeSupplier.Builder createCustomAttributes() {
-		return Mob.createMobAttributes()
-				.add(Attributes.MAX_HEALTH, 100)
-				.add(Attributes.MOVEMENT_SPEED, 0);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 100).add(Attributes.MOVEMENT_SPEED, 0);
 	}
 }
