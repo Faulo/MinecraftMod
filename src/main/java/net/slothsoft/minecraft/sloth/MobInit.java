@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,7 +15,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MobInit {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES,
 			Constants.MOD_ID);
@@ -29,7 +30,7 @@ public class MobInit {
 	}
 	@SubscribeEvent
 	public static final void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		//event.registerLayerDefinition(MobInit.SLOTH.get(), SlothModel::createBodyLayer);
+		event.registerLayerDefinition(SlothModel.LAYER_LOCATION, SlothModel::createBodyLayer);
 	}
 	@SubscribeEvent
 	public static final void reigsterRenderers(EntityRenderersEvent.RegisterRenderers event) {

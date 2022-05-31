@@ -12,7 +12,8 @@ public class SlothRenderer<T extends SlothEntity> extends MobRenderer<T, SlothMo
 		super(context, model, p_174306_);
 	}
 	public SlothRenderer(Context context)  {
-		this(context, new SlothModel<T>(), 0);
+
+		this(context, new SlothModel<T>(context.bakeLayer(SlothModel.LAYER_LOCATION)), 0);
 	}
 
 	@Override
