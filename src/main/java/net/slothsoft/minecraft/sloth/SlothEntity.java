@@ -1,5 +1,7 @@
 package net.slothsoft.minecraft.sloth;
 
+import java.util.Random;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
@@ -10,10 +12,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.storage.WorldData;
-
-import java.util.Random;
 
 public class SlothEntity extends Animal {
 
