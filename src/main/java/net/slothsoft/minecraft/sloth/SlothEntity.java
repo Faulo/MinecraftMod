@@ -22,6 +22,6 @@ public class SlothEntity extends Animal {
 
 	@Override
 	protected void registerGoals() {
-		goalSelector.addGoal(0, new TemptGoal(this, 100, Ingredient.of(ItemInit.EXAMPLE_BLOCK.get()), false));
+		goalSelector.addGoal(0, new TemptGoal(this, 100, Ingredient.of(ItemInit.SLOTH_EGG.get()), false));
 	}
 }
