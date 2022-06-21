@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SlothMossModel<T extends SlothEntity> extends QuadrupedModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-			new ResourceLocation(Constants.MOD_ID, "slothmodel_moss"), "main");
+			new ResourceLocation(Constants.MOD_ID, "slothmodel_moss_old"), "main");
 
 	private float headXRot;
 
