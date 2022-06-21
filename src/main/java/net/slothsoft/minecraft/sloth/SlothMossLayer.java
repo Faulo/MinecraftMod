@@ -13,9 +13,12 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEntity>> {
-	private static final ResourceLocation SHEEP_FUR_LOCATION = new ResourceLocation(
+	private static final ResourceLocation SLOTH_MOSS_LOCATION = new ResourceLocation(
 			"textures/entity/sheep/sheep_fur.png");
 	private final SlothMossModel<SlothEntity> model;
 
@@ -34,7 +37,7 @@ public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEnt
 					this.getParentModel().copyPropertiesTo(this.model);
 					this.model.prepareMobModel(p_117424_, p_117425_, p_117426_, p_117427_);
 					this.model.setupAnim(p_117424_, p_117425_, p_117426_, p_117428_, p_117429_, p_117430_);
-					VertexConsumer vertexconsumer = p_117422_.getBuffer(RenderType.outline(SHEEP_FUR_LOCATION));
+					VertexConsumer vertexconsumer = p_117422_.getBuffer(RenderType.outline(SLOTH_MOSS_LOCATION));
 					this.model.renderToBuffer(p_117421_, vertexconsumer, p_117423_,
 							LivingEntityRenderer.getOverlayCoords(p_117424_, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
 				}
@@ -45,7 +48,7 @@ public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEnt
 				float f1 = afloat[1];
 				float f2 = afloat[2];
 
-				coloredCutoutModelCopyLayerRender(this.getParentModel(), this.model, SHEEP_FUR_LOCATION, p_117421_,
+				coloredCutoutModelCopyLayerRender(this.getParentModel(), this.model, SLOTH_MOSS_LOCATION, p_117421_,
 						p_117422_, p_117423_, p_117424_, p_117425_, p_117426_, p_117428_, p_117429_, p_117430_,
 						p_117427_, f, f1, f2);
 			}
