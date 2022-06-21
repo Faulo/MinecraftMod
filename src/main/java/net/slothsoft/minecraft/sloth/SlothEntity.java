@@ -32,7 +32,11 @@ public class SlothEntity extends Sheep {
 
 	@Override
 	public boolean isFood(ItemStack item) {
-		return item.is(Items.MELON_SLICE);
+		return item.is(Items.MELON_SLICE) 
+				|| item.is(Items.POPPY) 
+				|| item.is(Items.DANDELION) 
+				|| item.is(Items.FERN) 
+				|| item.is(Items.LARGE_FERN);
 	}
 
 	@Override
