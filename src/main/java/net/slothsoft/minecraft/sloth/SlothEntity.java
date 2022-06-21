@@ -9,6 +9,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -18,6 +21,11 @@ public class SlothEntity extends Animal {
 	protected SlothEntity(EntityType<? extends Animal> animal, Level level) {
 		super(animal, level);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public boolean isFood(ItemStack item) {
+		return item.is(Items.MELON_SLICE);
 	}
 
 	@Override
