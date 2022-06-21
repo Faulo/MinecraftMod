@@ -10,12 +10,12 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-public class MossCoatModel<T extends Entity> extends EntityModel<T> {
+public class SlothMossCoatModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "mosscoatmodel"), "main");
 	private final ModelPart bb_main;
 
-	public MossCoatModel(ModelPart root) {
+	public SlothMossCoatModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
 	}
 
