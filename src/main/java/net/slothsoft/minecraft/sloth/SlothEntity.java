@@ -37,9 +37,13 @@ public class SlothEntity extends Sheep {
 	private static final double moveSpeed = 0.1D;
 
 	@Override
-		public boolean isFood(ItemStack item) {
-			return item.is(Items.MELON_SLICE);
-		}
+	public boolean isFood(ItemStack item) {
+		return item.is(Items.MELON_SLICE)
+			|| item.is(Items.POPPY) 
+			|| item.is(Items.DANDELION) 
+			|| item.is(Items.FERN) 
+			|| item.is(Items.LARGE_FERN);
+	}
 
 	@Override
 	public Sheep getBreedOffspring(ServerLevel level, AgeableMob parent) {
