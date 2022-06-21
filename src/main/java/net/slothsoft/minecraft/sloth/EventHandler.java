@@ -20,7 +20,7 @@ public class EventHandler {
 
 	@SubscribeEvent
 	public static void commonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(()-> SpawnPlacements.register(MobInit.SLOTH.get(),
-				SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SlothEntity::canSpawn));
+		event.enqueueWork(() -> SpawnPlacements.register(MobInit.SLOTH.get(), SpawnPlacements.Type.ON_GROUND,
+				Heightmap.Types.WORLD_SURFACE, SlothEntity::canSpawn));
 	}
 }
