@@ -1,29 +1,25 @@
 package net.slothsoft.minecraft.sloth;
 
-import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraft.client.renderer.entity.layers.SheepFurLayer;
-import net.minecraft.client.model.SheepModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.layers.SheepFurLayer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.Sheep;
 
-public class SlothRenderer extends MobRenderer<Sheep, SheepModel<Sheep>> {
+public class SlothRenderer extends MobRenderer<SlothEntity, SlothModel<SlothEntity>> {
 
 	static final ResourceLocation TEXTURE = new ResourceLocation(Constants.MOD_ID, "textures/entities/sloth.png");
 
-	public SlothRenderer(EntityRendererProvider.Context context, SheepModel<T> model, float p_174306_) {
+	public SlothRenderer(EntityRendererProvider.Context context, SlothModel<SlothEntity> model, float p_174306_) {
 		super(context, model, p_174306_);
-        this.addLayer(new SheepFurLayer(this, context.getModelSet()));
+		this.addLayer(new SlothMossLayer(this, context.getModelSet()));
 	}
 
 	public SlothRenderer(Context context) {
-		this(context, new SheepModel<Sheep>(context.bakeLayer(SlothModel.LAYER_LOCATION)), 0);
+		this(context, new SlothModel<SlothEntity>(context.bakeLayer(SlothModel.LAYER_LOCATION)), 0);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Sheep entity) {
+	public ResourceLocation getTextureLocation(SlothEntity entity) {
 		return TEXTURE;
 	}
 

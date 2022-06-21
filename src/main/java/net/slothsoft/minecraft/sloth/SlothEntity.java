@@ -8,7 +8,6 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.EatBlockGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowParentGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -16,7 +15,6 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -40,13 +38,13 @@ public class SlothEntity extends Sheep {
 	protected void registerGoals() {
 		super.registerGoals();
 		goalSelector.removeAllGoals();
-		
+
 		goalSelector.addGoal(0, new FloatGoal(this));
 		goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.MELON_SLICE), false));
 		goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
-		
+
 		goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		goalSelector.addGoal(8, new RandomLookAroundGoal(this));
