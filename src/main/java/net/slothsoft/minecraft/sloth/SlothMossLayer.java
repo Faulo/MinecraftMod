@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.item.DyeColor;
 
 public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEntity>> {
 	private static final ResourceLocation SHEEP_FUR_LOCATION = new ResourceLocation(
@@ -41,27 +40,10 @@ public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEnt
 				}
 
 			} else {
-				float f;
-				float f1;
-				float f2;
-				if (p_117424_.hasCustomName() && "jeb_".equals(p_117424_.getName().getContents())) {
-					int i1 = 25;
-					int i = p_117424_.tickCount / 25 + p_117424_.getId();
-					int j = DyeColor.values().length;
-					int k = i % j;
-					int l = (i + 1) % j;
-					float f3 = ((float) (p_117424_.tickCount % 25) + p_117427_) / 25.0F;
-					float[] afloat1 = Sheep.getColorArray(DyeColor.byId(k));
-					float[] afloat2 = Sheep.getColorArray(DyeColor.byId(l));
-					f = afloat1[0] * (1.0F - f3) + afloat2[0] * f3;
-					f1 = afloat1[1] * (1.0F - f3) + afloat2[1] * f3;
-					f2 = afloat1[2] * (1.0F - f3) + afloat2[2] * f3;
-				} else {
-					float[] afloat = Sheep.getColorArray(p_117424_.getColor());
-					f = afloat[0];
-					f1 = afloat[1];
-					f2 = afloat[2];
-				}
+				float[] afloat = Sheep.getColorArray(p_117424_.getColor());
+				float f = afloat[0];
+				float f1 = afloat[1];
+				float f2 = afloat[2];
 
 				coloredCutoutModelCopyLayerRender(this.getParentModel(), this.model, SHEEP_FUR_LOCATION, p_117421_,
 						p_117422_, p_117423_, p_117424_, p_117425_, p_117426_, p_117428_, p_117429_, p_117430_,
