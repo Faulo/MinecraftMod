@@ -6,7 +6,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowParentGoal;
@@ -30,10 +33,13 @@ public class SlothEntity extends Sheep {
 		// TODO Auto-generated constructor stub
 	}
 
+	private static final double maxHealth = 100D;
+	private static final double moveSpeed = 0.1D;
+
 	@Override
-	public boolean isFood(ItemStack item) {
-		return item.is(Items.MELON_SLICE);
-	}
+		public boolean isFood(ItemStack item) {
+			return item.is(Items.MELON_SLICE);
+		}
 
 	@Override
 	public Sheep getBreedOffspring(ServerLevel level, AgeableMob parent) {
@@ -60,5 +66,9 @@ public class SlothEntity extends Sheep {
 			BlockPos pos, Random random) {
 		return checkAnimalSpawnRules(entity, levelAccess, spawnType, pos, random)
 				&& levelAccess instanceof final Level level;
+	}
+
+	public static AttributeSupplier.Builder createCustomAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, maxHealth).add(Attributes.MOVEMENT_SPEED, moveSpeed);
 	}
 }

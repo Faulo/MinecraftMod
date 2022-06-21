@@ -26,7 +26,7 @@ public class MobInit {
 
 	@SubscribeEvent
 	public static final void entityAttributeCreation(EntityAttributeCreationEvent event) {
-		event.put(MobInit.SLOTH.get(), createCustomAttributes().build());
+		event.put(MobInit.SLOTH.get(), SlothEntity.createCustomAttributes().build());
 	}
 
 	@SubscribeEvent
@@ -37,9 +37,5 @@ public class MobInit {
 	@SubscribeEvent
 	public static final void reigsterRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(MobInit.SLOTH.get(), SlothRenderer::new);
-	}
-
-	public static AttributeSupplier.Builder createCustomAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 100).add(Attributes.MOVEMENT_SPEED, 0);
 	}
 }
