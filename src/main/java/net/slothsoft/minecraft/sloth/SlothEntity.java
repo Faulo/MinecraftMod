@@ -2,8 +2,12 @@ package net.slothsoft.minecraft.sloth;
 
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -19,12 +23,13 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class SlothEntity extends Sheep {
 
@@ -38,11 +43,8 @@ public class SlothEntity extends Sheep {
 
 	@Override
 	public boolean isFood(ItemStack item) {
-		return item.is(Items.MELON_SLICE)
-			|| item.is(Items.POPPY) 
-			|| item.is(Items.DANDELION) 
-			|| item.is(Items.FERN) 
-			|| item.is(Items.LARGE_FERN);
+		return item.is(Items.MELON_SLICE) || item.is(Items.POPPY) || item.is(Items.DANDELION) || item.is(Items.FERN)
+				|| item.is(Items.LARGE_FERN);
 	}
 
 	@Override
@@ -73,6 +75,27 @@ public class SlothEntity extends Sheep {
 	}
 
 	public static AttributeSupplier.Builder createCustomAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, maxHealth).add(Attributes.MOVEMENT_SPEED, moveSpeed);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, maxHealth).add(Attributes.MOVEMENT_SPEED,
+				moveSpeed);
+	}
+
+	@javax.annotation.Nonnull
+	@Override
+	public java.util.List<ItemStack> onSheared(@Nullable Player player, @javax.annotation.Nonnull ItemStack item,
+			Level world, BlockPos pos, int fortune) {
+		world.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS,
+				1.0F, 1.0F);
+		this.gameEvent(GameEvent.SHEAR, player);
+		if (!world.isClientSide) {
+			this.setSheared(true);
+			int i = 1 + this.random.nextInt(3);
+
+			java.util.List<ItemStack> items = new java.util.ArrayList<>();
+			for (int j = 0; j < i; ++j) {
+				items.add(new ItemStack(Items.MOSS_BLOCK));
+			}
+			return items;
+		}
+		return java.util.Collections.emptyList();
 	}
 }
