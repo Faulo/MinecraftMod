@@ -1,5 +1,6 @@
 package net.slothsoft.minecraft.sloth;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,6 +15,8 @@ public class Bootstrap {
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 		MobInit.ENTITIES.register(bus);
+		
+		MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

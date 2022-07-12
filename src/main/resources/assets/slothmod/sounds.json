@@ -1,0 +1,26 @@
+{
+  "entity.sloth.hurt": {
+    "category" : "player",
+    "sounds": [{
+        "name": "slothmod:entity.sloth.hurt",
+        "stream": false
+      }
+    ]
+  },
+  "entity.sloth.ambient": {
+    "category" : "player",
+    "sounds": [{
+        "name": "slothmod:entity.sloth.ambient",
+        "stream": true
+      }
+    ]
+  },
+  "entity.sloth.death": {
+    "category" : "player",
+    "sounds": [{
+        "name": "slothmod:entity.sloth.death",
+        "stream": false
+      }
+    ]
+  }
+}
