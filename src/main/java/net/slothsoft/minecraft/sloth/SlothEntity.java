@@ -5,13 +5,15 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
@@ -22,6 +24,7 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,17 +32,20 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.common.IForgeShearable;
 
-public class SlothEntity extends Sheep {
+public class SlothEntity extends Animal implements IForgeShearable {
 
-	protected SlothEntity(EntityType<? extends Sheep> animal, Level level) {
+	protected SlothEntity(EntityType<? extends Animal> animal, Level level) {
 		super(animal, level);
 		// TODO Auto-generated constructor stub
 	}
 
 	private static final double maxHealth = 100D;
 	private static final double moveSpeed = 0.1D;
+	private static final EntityDataAccessor<Byte> DATA_WOOL_ID = SynchedEntityData.defineId(Sheep.class, EntityDataSerializers.BYTE);
 
 	@Override
 	public boolean isFood(ItemStack item) {
@@ -47,8 +53,26 @@ public class SlothEntity extends Sheep {
 				|| item.is(Items.LARGE_FERN);
 	}
 
-	@Override
-	public Sheep getBreedOffspring(ServerLevel level, AgeableMob parent) {
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_WOOL_ID, (byte)0);
+	}
+
+	public boolean isSheared() {
+		 return (this.entityData.get(DATA_WOOL_ID) & 16) != 0;
+		//return false;
+	}
+
+	public void setSheared(boolean p_29879_) {
+		byte b0 = this.entityData.get(DATA_WOOL_ID);
+		if (p_29879_) {
+			this.entityData.set(DATA_WOOL_ID, (byte) (b0 | 16));
+		} else {
+			this.entityData.set(DATA_WOOL_ID, (byte) (b0 & -17));
+		}
+	}
+
+	public SlothEntity getBreedOffspring(ServerLevel level, AgeableMob parent) {
 		return MobInit.SLOTH.get().create(level);
 	}
 
@@ -77,6 +101,15 @@ public class SlothEntity extends Sheep {
 	public static AttributeSupplier.Builder createCustomAttributes() {
 		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, maxHealth).add(Attributes.MOVEMENT_SPEED,
 				moveSpeed);
+	}
+
+	public boolean readyForShearing() {
+		return this.isAlive() && !this.isSheared() && !this.isBaby();
+	}
+
+	@Override
+	public boolean isShearable(@javax.annotation.Nonnull ItemStack item, Level world, BlockPos pos) {
+		return readyForShearing();
 	}
 
 	@javax.annotation.Nonnull

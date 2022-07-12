@@ -43,14 +43,14 @@ public class SlothMossLayer extends RenderLayer<SlothEntity, SlothModel<SlothEnt
 				}
 
 			} else {
-				float[] afloat = Sheep.getColorArray(p_117424_.getColor());
+				/* float[] afloat = Sheep.getColorArray(p_117424_.getColor());
 				float f = afloat[0];
 				float f1 = afloat[1];
 				float f2 = afloat[2];
 
 				coloredCutoutModelCopyLayerRender(this.getParentModel(), this.model, SLOTH_MOSS_LOCATION, p_117421_,
 						p_117422_, p_117423_, p_117424_, p_117425_, p_117426_, p_117428_, p_117429_, p_117430_,
-						p_117427_, f, f1, f2);
+						p_117427_, f, f1, f2);*/
 			}
 		}
 	}

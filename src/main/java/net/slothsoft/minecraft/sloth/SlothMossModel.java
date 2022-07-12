@@ -41,8 +41,8 @@ public class SlothMossModel<T extends SlothEntity> extends QuadrupedModel<T> {
 
 	public void prepareMobModel(T p_103661_, float p_103662_, float p_103663_, float p_103664_) {
 		super.prepareMobModel(p_103661_, p_103662_, p_103663_, p_103664_);
-		this.head.y = 6.0F + p_103661_.getHeadEatPositionScale(p_103664_) * 9.0F;
-		this.headXRot = p_103661_.getHeadEatAngleScale(p_103664_);
+		// this.head.y = 6.0F + p_103661_.getHeadEatPositionScale(p_103664_) * 9.0F;
+		// this.headXRot = p_103661_.getHeadEatAngleScale(p_103664_);
 	}
 
 	public void setupAnim(T p_103666_, float p_103667_, float p_103668_, float p_103669_, float p_103670_,
