@@ -6,8 +6,10 @@ import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -29,6 +31,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 public class SlothEntity extends Sheep {
@@ -98,4 +101,25 @@ public class SlothEntity extends Sheep {
 		}
 		return java.util.Collections.emptyList();
 	}
+	
+	
+	@Override
+    protected SoundEvent getAmbientSound() {
+    	return SoundRegistrator.ENTITY_SLOTH_IDLE;
+	}
+
+	@Override
+    protected SoundEvent getHurtSound(DamageSource p_29872_) {
+    	return SoundRegistrator.ENTITY_SLOTH_HURT;
+    }
+
+	@Override
+    protected SoundEvent getDeathSound() {
+    	return SoundRegistrator.ENTITY_SLOTH_DEATH;
+    }
+
+	@Override
+    protected void playStepSound(BlockPos p_29861_, BlockState p_29862_) {
+    	this.playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
+    }
 }
